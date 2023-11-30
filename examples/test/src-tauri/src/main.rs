@@ -5,7 +5,7 @@
 
 use std::sync::atomic::{AtomicBool, Ordering};
 use tauri::{Manager, Runtime, State, Window};
-use tauri_plugin_log::{LogTarget, LoggerBuilder};
+use tauri_plugin_log::{LogTarget, Builder};
 
 struct Received(AtomicBool);
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
@@ -46,7 +46,7 @@ fn main() {
             LogTarget::Webview,
         ];
 
-        LoggerBuilder::new().targets(targets).build()
+        Builder::default().targets(targets).build()
     };
 
     tauri::Builder::default()
